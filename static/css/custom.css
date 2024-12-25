@@ -1,0 +1,47 @@
+.a1{
+    display: block;
+    margin: 0;
+    margin-top: 10px;
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(233, 19, 39);
+    font-weight: 300;
+    border-bottom-left-radius: 12.0307px;
+    border-top-right-radius: 12.0307px;
+    padding-bottom: 2.22883px;
+    padding-left: 5.57208px;
+    padding-right: 5.57208px;
+    padding-top: 2.22883px;
+    cursor : pointer;
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    width:  129.517px;
+    height:  40px;
+    text-decoration-line: none;
+    padding: 0;
+
+}
+
+.a1:hover{
+    background-color: rgb(93, 84, 85);
+    color: white;
+    text-decoration: none;
+
+}
+
+.a2{
+    width: 80%;
+    padding: 10px;
+}
+
+.a2:hover {
+    border: 2px solid red; /* Hiệu ứng viền màu đỏ khi hover */
+    text-decoration: none;
+}
+
+.a2:active {
+    border: 2px solid red; /* Tăng kích thước hoặc màu viền khi nhấn */
+
+    text-decoration: none;
+}

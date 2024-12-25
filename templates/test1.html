@@ -1,0 +1,73 @@
+
+<div id="email-form">
+    <h2>Gửi Email qua Gmail API</h2>
+    <form id="saveEmailForm">
+      <label for="to_email">Địa chỉ email:</label>
+      <input type="email" id="to_email" name="to_email" required>
+  
+      <label for="subject">Tiêu đề:</label>
+      <input type="text" id="subject" name="subject" required>
+  
+      <label for="body">Nội dung:</label>
+      <textarea id="body" name="body" rows="4" required></textarea>
+  
+      <button type="submit">Lưu Email</button>
+    </form>
+    <button id="sendSavedEmails">Gửi Email từ File JSON</button>
+    <p id="responseMessage"></p>
+  </div>
+  
+  <script>
+    // Lưu email vào file JSON
+    document.getElementById('saveEmailForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+  
+      const to_email = document.getElementById('to_email').value;
+      const subject = document.getElementById('subject').value;
+      const body = document.getElementById('body').value;
+  
+      fetch('/save-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ to_email, subject, body }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          const responseMessage = document.getElementById('responseMessage');
+          if (data.status === 'success') {
+            responseMessage.textContent = data.message;
+            responseMessage.style.color = 'green';
+          } else {
+            responseMessage.textContent = data.message;
+            responseMessage.style.color = 'red';
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+  
+    // Gửi email từ file JSON
+    document.getElementById('sendSavedEmails').addEventListener('click', function () {
+      fetch('/send-saved-emails', {
+        method: 'POST',
+      })
+        .then(response => response.json())
+        .then(data => {
+          const responseMessage = document.getElementById('responseMessage');
+          if (data.status === 'success') {
+            responseMessage.textContent = data.message;
+            responseMessage.style.color = 'green';
+          } else {
+            responseMessage.textContent = data.message;
+            responseMessage.style.color = 'red';
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+  </script>
+  
